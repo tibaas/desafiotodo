@@ -1,0 +1,52 @@
+
+
+
+.tasks {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-100);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    top: 45px;
+    gap: 10px;
+    border: 1px solid var(--gray-400);
+    border-radius: 5px;
+    padding: 16px;
+    background: var(--gray-500);
+
+   
+
+    .trashIcon {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        color: var(--gray-300);
+        padding: 2px 3px 2px 3px;
+        
+        display: flex;
+
+        margin-bottom: 15px;
+        
+        
+        
+
+        &:hover {
+            color: var(--danger);
+            background: var(--gray-400);
+            border-radius: 4px;
+            
+            
+            
+        }
+        
+    }
+
+    
+
+    
+    
+}
