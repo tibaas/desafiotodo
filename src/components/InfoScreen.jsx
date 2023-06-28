@@ -9,7 +9,6 @@ export function InfoScreen(){
                 <p1> <strong>Você ainda não tem tarefas cadastradas</strong></p1>
                 <p1> Crie tarefas e organize seus itens a fazer</p1>
             
-           
         </div>
     )
 }

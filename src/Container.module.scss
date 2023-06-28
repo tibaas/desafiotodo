@@ -8,7 +8,6 @@
 }
 
 
-
 .header {
     width: 100%;
     height: 200px;
@@ -35,6 +34,13 @@
     position: absolute;
     margin-top: 200px;
     gap: 15px;
+
+    // img {
+    //     position: relative;
+    //     top: 171px;
+    //     left: 34px;
+    //     z-index: 1;
+    // }
 }
 
 .inputBar {
@@ -85,17 +91,15 @@
         background: var(--blue);
     }
    
-}
+} 
 
-/* Borda que separa o conteudo da tela */
 .spanContainer {
     position: absolute;
     display: flex;
     top: 291px;
     left: calc(50% - 736px/2);
     
-    // height: 100%;
-    
+    /* Borda que separa o conteudo da tela */
     .separatorSpan {
        
         width: 735px; 
@@ -167,8 +171,6 @@
             bottom: 0;
             left: 85px;
             border-radius: 10px;
-            
-            
         }
         
     } 
@@ -182,6 +184,8 @@
     justify-content: center;
     position: absolute;
     width: 735px;
-    height: 100%;
+    
+    gap: 10px;
+    top: 45px;
    
 }

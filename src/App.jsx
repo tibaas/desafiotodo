@@ -1,5 +1,6 @@
 
 import todoLogo from './assets/Logo-todo.svg'
+
 import styles from './Container.module.scss'
 
 import { PlusCircle } from 'phosphor-react'
@@ -9,11 +10,6 @@ import { Tasks } from './components/Tasks'
 import { InfoScreen } from './components/InfoScreen'
 
 function App() {
-  const showingTask = <Tasks />
-
-  
-  
- 
 
   return (
     <section>
@@ -22,6 +18,7 @@ function App() {
             <img src={todoLogo} alt="Logo-todo" />
           </header>
         <div className={styles.inputBarContainer}>
+          
           <input 
             className={styles.inputBar}
             type="text" 
@@ -40,25 +37,19 @@ function App() {
               <div className={styles.separatorSpan}></div>
 
               <div className={styles.feedTask}>
+               
+              {/* <InfoScreen /> */}
               
               <Tasks />
               <Tasks />
               <Tasks />
-                
-               
-                
-              {/* <InfoScreen /> */}
-                
+              
+             
+             
               </div> 
                     
-            </div>
-             
-          
-
-            
-      </div> 
-       
-      
+            </div>       
+      </div>       
     </section>
     
   )
