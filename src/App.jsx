@@ -1,4 +1,5 @@
 
+import React from 'react'
 import todoLogo from './assets/Logo-todo.svg'
 
 import styles from './Container.module.scss'
@@ -8,8 +9,38 @@ import { PlusCircle } from 'phosphor-react'
 import './global.css'
 import { Tasks } from './components/Tasks'
 import { InfoScreen } from './components/InfoScreen'
+import { useState } from 'react'
 
 function App() {
+
+  const [newTask, setNewTask] = useState('');
+  const [tasks, setTasks] = useState([]);
+  const [taskCount, setTaskCount] = useState(0);
+  const [completedTasksCount, setCompletedTasksCount] = useState(0);
+  
+
+  const handleChange = (e) => {
+      setNewTask(e.target.value)
+  }
+
+  
+  function createTask() {
+    if (newTask.trim() !== '') {
+      // setTasks([...tasks, newTask])
+      setTasks([...tasks, { task: newTask, completed: false }]);
+      setTaskCount(taskCount + 1)
+      setNewTask('')
+    }
+    
+  }
+
+  function markTaskAsCompleted(index) {
+    const updatedTasks = [...tasks];
+    updatedTasks[index].completed = true;
+    setTasks(updatedTasks);
+    setCompletedTasksCount(completedTasksCount + 1);
+  }
+
 
   return (
     <section>
@@ -21,6 +52,8 @@ function App() {
           
           <input 
             className={styles.inputBar}
+            
+            onChange={handleChange}
             type="text" 
             placeholder='Adicione uma nova tarefa'
           /> 
@@ -28,24 +61,26 @@ function App() {
           <button
             className={styles.inputButton} 
             type="submit"
+            onClick={createTask}
           >  <strong>Criar</strong> <PlusCircle size={18} />  </button>
         </div>
             <div className={styles.spanContainer}>
-              <p>Tarefas criadas<span>0</span></p> 
-              <p>Concluídas<span>0</span></p>  
+              <p>Tarefas criadas<span>{taskCount}</span></p> 
+              <p>
+                Concluídas<span>{`${completedTasksCount} de ${taskCount}`}</span>
+              </p>
 
               <div className={styles.separatorSpan}></div>
 
               <div className={styles.feedTask}>
-               
-              {/* <InfoScreen /> */}
-              
-              <Tasks />
-              <Tasks />
-              <Tasks />
-              
-             
-             
+                {tasks.map((task, index ) => {
+                 return <Tasks 
+                 key={index} 
+                 task={task.task} 
+                 completed={task.completed}
+                 onMarkAsCompleted={() => markTaskAsCompleted(index)}
+                 />
+                })}
               </div> 
                     
             </div>       
@@ -56,3 +91,4 @@ function App() {
 }
 
 export default App
+

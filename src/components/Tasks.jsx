@@ -2,31 +2,38 @@ import { Trash } from 'phosphor-react'
 import Checkbox from '../assets/Checkbox-layer.svg'
 import Checked from '../assets/Checked.svg'
 import styles from '../components/Tasks.module.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 
-export function Tasks() {
+export function Tasks({task, completed, onMarkAsCompleted}) {
 
     const [isVisible, setIsVisible] = useState(true);
-    const [isTextHighlighted, setIsTextHighlighted] = useState(false)
+    const [isTextHighlighted, setIsTextHighlighted] = useState(completed)
+
+    // useEffect(() => {
+    //     setIsTextHighlighted(completed);
+    // }, [completed]);
 
     
     const StyleMarked = {
         textDecoration: isTextHighlighted ? 'line-through' : 'none',
-        opacity: isTextHighlighted ? '50%' : '100%',    
+        opacity: isTextHighlighted ? '50%' : '100%',  
+        
     }
     
 
     function handleClick() {
-        setIsVisible(!isVisible);
+
+        setIsVisible(!isVisible)
         setIsTextHighlighted(!isTextHighlighted)
+        onMarkAsCompleted(!isTextHighlighted)
     
     }
 
     return(
         <div>
-            <section>       
+            <section className={styles.sectionSize}>       
                 <div className={styles.tasks}>
                     <div className={styles.imgDiv}>
 
@@ -48,7 +55,7 @@ export function Tasks() {
                         />
                     </div>
                     <input type="checkbox" />
-                    <label style={StyleMarked}>"Lorem ipsum dolor sit amet,adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam . </label>
+                    <label style={StyleMarked}>{task}</label>
                     <button className={styles.trashIcon}><Trash size={18} /></button>
                 </div>   
             </section>
