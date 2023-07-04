@@ -23,10 +23,8 @@ function App() {
     if (newTask.trim() !== '') {
       setTasks([...tasks, { task: newTask, completed: false }]);
       setTaskCount(taskCount + 1)
-      setNewTask('')
-      
-    }
-    
+      setNewTask('')   
+    }  
   }
 
   function markTaskAsCompleted(index) {
