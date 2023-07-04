@@ -30,7 +30,6 @@ function App() {
   function markTaskAsCompleted(index) {
     const updatedTasks = [...tasks];
     const task = updatedTasks[index];
-  
     if (task.completed) {
       task.completed = false;
       setCompletedTasksCount(completedTasksCount - 1);
