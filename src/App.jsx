@@ -8,7 +8,6 @@ import todoLogo from './assets/Logo-todo.svg'
 import styles from './Container.module.scss'
 import './global.css'
 
-
 function App() {
 
   const [newTask, setNewTask] = useState('');
