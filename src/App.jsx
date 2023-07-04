@@ -34,7 +34,6 @@ function App() {
       setCompletedTasksCount(completedTasksCount + 1);
     }
     setTasks(updatedTasks)
-    console.log(updatedTasks)
   }
   return (
     <section>
