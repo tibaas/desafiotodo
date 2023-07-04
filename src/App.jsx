@@ -1,15 +1,14 @@
 
 import React from 'react'
+import { useState } from 'react'
+import { Tasks } from './components/Tasks'
+import { InfoScreen } from './components/InfoScreen'
+import { PlusCircle } from 'phosphor-react'
 import todoLogo from './assets/Logo-todo.svg'
 
 import styles from './Container.module.scss'
-
-import { PlusCircle } from 'phosphor-react'
-
 import './global.css'
-import { Tasks } from './components/Tasks'
-import { InfoScreen } from './components/InfoScreen'
-import { useState } from 'react'
+
 
 function App() {
 
@@ -17,30 +16,35 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [taskCount, setTaskCount] = useState(0);
   const [completedTasksCount, setCompletedTasksCount] = useState(0);
-  
 
   const handleChange = (e) => {
       setNewTask(e.target.value)
   }
 
-  
   function createTask() {
     if (newTask.trim() !== '') {
       setTasks([...tasks, { task: newTask, completed: false }]);
       setTaskCount(taskCount + 1)
       setNewTask('')
+      
     }
     
   }
 
   function markTaskAsCompleted(index) {
     const updatedTasks = [...tasks];
-    updatedTasks[index].completed = true;
-    setTasks(updatedTasks);
-    updatedTasks[index].completed ? setCompletedTasksCount(completedTasksCount + 1) : updatedTasks[index].completed = false
+    const task = updatedTasks[index];
+  
+    if (task.completed) {
+      task.completed = false;
+      setCompletedTasksCount(completedTasksCount - 1);
+    } else {
+      task.completed = true;
+      setCompletedTasksCount(completedTasksCount + 1);
+    }
+    setTasks(updatedTasks)
     console.log(updatedTasks)
   }
-
 
   return (
     <section>
@@ -48,16 +52,13 @@ function App() {
           <header className={styles.header}>
             <img src={todoLogo} alt="Logo-todo" />
           </header>
-        <div className={styles.inputBarContainer}>
-          
+        <div className={styles.inputBarContainer}>   
           <input 
-            className={styles.inputBar}
-            
+            className={styles.inputBar}  
             onChange={handleChange}
             type="text" 
             placeholder='Adicione uma nova tarefa'
-          /> 
-          
+          />       
           <button
             className={styles.inputButton} 
             type="submit"
