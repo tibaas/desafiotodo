@@ -26,7 +26,6 @@ function App() {
   
   function createTask() {
     if (newTask.trim() !== '') {
-      // setTasks([...tasks, newTask])
       setTasks([...tasks, { task: newTask, completed: false }]);
       setTaskCount(taskCount + 1)
       setNewTask('')
@@ -38,7 +37,8 @@ function App() {
     const updatedTasks = [...tasks];
     updatedTasks[index].completed = true;
     setTasks(updatedTasks);
-    setCompletedTasksCount(completedTasksCount + 1);
+    updatedTasks[index].completed ? setCompletedTasksCount(completedTasksCount + 1) : updatedTasks[index].completed = false
+    console.log(updatedTasks)
   }
 
 
