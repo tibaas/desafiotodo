@@ -1,6 +1,7 @@
-# Todo List
-Este é um projeto React de uma aplicação de lista de tarefas (todo list) simples. 
+# Desafio 01 - Praticando os conceitos do ReactJS
+- Este é um projeto React de uma aplicação de lista de tarefas (todo list) simples. 
 Com este projeto, você poderá criar e excluir tarefas e marcá-las como concluídas.
+- Este projeto é o primeiro desafio do curso Ignite da `Rocketseat` 🚀 
 
 # Funcionalidades
 - Adicionar uma nova tarefa à lista
@@ -33,4 +34,4 @@ npm start
 #### A aplicação estará disponível no seguinte endereço: http://localhost:3000
 
 
-### #NeverStopLearning
+### `#NeverStopLearning`
