@@ -9,16 +9,13 @@ import styles from './Container.module.scss'
 import './global.css'
 
 function App() {
-
   const [newTask, setNewTask] = useState('');
   const [tasks, setTasks] = useState([]);
   const [taskCount, setTaskCount] = useState(0);
   const [completedTasksCount, setCompletedTasksCount] = useState(0);
-
   const handleChange = (e) => {
       setNewTask(e.target.value)
   }
-
   function createTask() {
     if (newTask.trim() !== '') {
       setTasks([...tasks, { task: newTask, completed: false }]);
@@ -26,7 +23,6 @@ function App() {
       setNewTask('')   
     }  
   }
-
   function markTaskAsCompleted(index) {
     const updatedTasks = [...tasks];
     const task = updatedTasks[index];
@@ -40,7 +36,6 @@ function App() {
     setTasks(updatedTasks)
     console.log(updatedTasks)
   }
-
   return (
     <section>
       <div className={styles.container}>
