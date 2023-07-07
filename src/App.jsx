@@ -25,16 +25,30 @@ function App() {
   }
   function markTaskAsCompleted(index) {
     const updatedTasks = [...tasks];
-    const task = updatedTasks[index];
-    if (task.completed) {
-      task.completed = false;
+    if (updatedTasks[index]?.completed) {
+      updatedTasks[index].completed = false;
       setCompletedTasksCount(completedTasksCount - 1);
-    } else {
-      task.completed = true;
+    } else if (updatedTasks[index]) {
+      updatedTasks[index].completed = true;
       setCompletedTasksCount(completedTasksCount + 1);
     }
-    setTasks(updatedTasks)
+    setTasks(updatedTasks);
   }
+
+  const deleteTask = (index) => {
+    const updatedTasks = [...tasks];
+    const taskToDelete = updatedTasks[index];
+    if (taskToDelete) {
+      updatedTasks.splice(index, 1);
+      setTasks(updatedTasks);
+      setTaskCount(taskCount - 1);
+      if (taskToDelete.completed) {
+        setCompletedTasksCount(completedTasksCount - 1);
+      }
+    }
+  }
+
+
   return (
     <section>
       <div className={styles.container}>
@@ -43,6 +57,7 @@ function App() {
           </header>
         <div className={styles.inputBarContainer}>   
           <input 
+            value={newTask}
             className={styles.inputBar}  
             onChange={handleChange}
             type="text" 
@@ -62,17 +77,21 @@ function App() {
 
               <div className={styles.separatorSpan}></div>
 
-              <div className={styles.feedTask}>
-                {tasks.map((task, index ) => {
-                 return <Tasks 
-                 key={index} 
-                 task={task.task} 
-                 completed={task.completed}
-                 onMarkAsCompleted={() => markTaskAsCompleted(index)}
-                 />
-                })}
-              </div> 
-                    
+              
+                <div className={styles.feedTask}>
+                  
+                  <InfoScreen />
+                  {tasks.map((task, index) => (
+                    <Tasks
+                      key={index}
+                      task={task.task}
+                      completed={task.completed}
+                      onMarkAsCompleted={() => markTaskAsCompleted(index)}
+                      onDeleteTask={() => deleteTask(index)}
+                    />
+                  ))}
+                </div>
+              
             </div>       
       </div>       
     </section>
