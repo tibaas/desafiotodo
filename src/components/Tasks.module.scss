@@ -1,6 +1,7 @@
 .sectionSize {
-    min-width: 735px;      
-}
+    min-width: 735px;   
+    
+}   
 .tasks {   
     display: flex;
     align-items: center;
@@ -16,13 +17,13 @@
     border-radius:10px;
     padding: 16px;
     background: var(--gray-500);
-    text-align: right;
-    direction: ltr;
      .taskTextWrapper {
          flex-grow: 1;
        }
     .taskText{
         text-align: left;
+        word-wrap: break-word;
+        max-width: 635px;   
     }
     .imgDiv {
         display: flex;
