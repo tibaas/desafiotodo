@@ -4,7 +4,6 @@ import { Tasks } from './components/Tasks'
 import { InfoScreen } from './components/InfoScreen'
 import { PlusCircle } from 'phosphor-react'
 import todoLogo from './assets/Logo-todo.svg'
-
 import styles from './Container.module.scss'
 import './global.css'
 
@@ -13,6 +12,7 @@ function App() {
   const [tasks, setTasks] = useState([]);
   const [taskCount, setTaskCount] = useState(0);
   const [completedTasksCount, setCompletedTasksCount] = useState(0);
+  const noTasksCreated = tasks.length === 0;
   const handleChange = (e) => {
       setNewTask(e.target.value)
   }
@@ -34,7 +34,6 @@ function App() {
     }
     setTasks(updatedTasks);
   }
-
   const deleteTask = (index) => {
     const updatedTasks = [...tasks];
     const taskToDelete = updatedTasks[index];
@@ -47,7 +46,6 @@ function App() {
       }
     }
   }
-
 
   return (
     <section>
@@ -74,13 +72,9 @@ function App() {
               <p>
                 Concluídas<span>{`${completedTasksCount} de ${taskCount}`}</span>
               </p>
-
-              <div className={styles.separatorSpan}></div>
-
-              
+              <div className={styles.separatorSpan}></div>             
                 <div className={styles.feedTask}>
-                  
-                  <InfoScreen />
+                {noTasksCreated && <InfoScreen />} 
                   {tasks.map((task, index) => (
                     <Tasks
                       key={index}

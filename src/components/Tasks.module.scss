@@ -1,9 +1,7 @@
 .sectionSize {
-    min-width: 730px;     
+    min-width: 735px;      
 }
-
-.tasks {
-    
+.tasks {   
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -18,9 +16,14 @@
     border-radius:10px;
     padding: 16px;
     background: var(--gray-500);
-
-   
-
+    text-align: right;
+    direction: ltr;
+     .taskTextWrapper {
+         flex-grow: 1;
+       }
+    .taskText{
+        text-align: left;
+    }
     .imgDiv {
         display: flex;
         align-items:center;
@@ -28,27 +31,21 @@
         padding: 10px;
 
         img {
-            position: absolute;
-            
+            position: absolute;        
         }
         .checkBox {
-            cursor: pointer;
-            
+            cursor: pointer;  
             border-radius: 10px;
             &:hover {
                 background: var(--blue-dark);
                 opacity: 70%;
             }
         }
-        
         .checkedBox {
             opacity: 80%;
-            cursor: pointer;
-            // transform: scale(1.2);          
+            cursor: pointer;        
         }
-
     }
-
     input {
         display: none;
     }
@@ -59,17 +56,10 @@
         cursor: pointer;
         color: var(--gray-300);
         padding: 2px 3px 2px 3px; 
-
         &:hover {
             color: var(--danger);
             background: var(--gray-400);
             border-radius: 4px;    
-        }
-        
-    }
-
-    
-
-    
-    
+        }   
+    }   
 }

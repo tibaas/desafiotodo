@@ -8,30 +8,19 @@ import styles from '../components/Tasks.module.scss'
 export function Tasks({task, completed, onMarkAsCompleted, onDeleteTask }) {
 
     const [isVisible, setIsVisible] = useState(true);
-    const [isTextHighlighted, setIsTextHighlighted] = useState(completed)
-    
+    const [isTextHighlighted, setIsTextHighlighted] = useState(completed)   
     const StyleMarked = {
         textDecoration: isTextHighlighted ? 'line-through' : 'none',
         opacity: isTextHighlighted ? '50%' : '100%',          
-    }
-
-    const DeleteTask = {
-        display: 'none'
-    }
-    
+    } 
     function handleClick() {
         setIsVisible(!isVisible)
         setIsTextHighlighted(!isTextHighlighted)
-        onMarkAsCompleted(!isTextHighlighted)   
-        
+        onMarkAsCompleted(!isTextHighlighted)         
     }
-
     function handleDeleteTask() {
         onDeleteTask()
     }
-
-
-
     return(
         <div>
             <section className={styles.sectionSize}>       
@@ -54,7 +43,11 @@ export function Tasks({task, completed, onMarkAsCompleted, onDeleteTask }) {
                         />
                     </div>
                     <input type="checkbox" />
-                    <label style={StyleMarked}>{task}</label>
+                    <div className={styles.taskTextWrapper}>
+                        <div className={styles.taskText}> 
+                            <label style={StyleMarked}>{task}</label>
+                        </div>
+                    </div>
                     <button onClick={handleDeleteTask} className={styles.trashIcon}><Trash size={18} /></button>
                 </div>   
             </section>
